@@ -6,6 +6,7 @@ import 'chart.js'
 class Main extends Component {
   constructor() {
     super();
+    // Local storage of data
     this.state = {
       countries: [],
       wheather: [],
@@ -25,6 +26,8 @@ class Main extends Component {
       },
     };
   }
+
+  // Get countries name 
   getSearchedData = (query) => {
     axios
       .get("https://restcountries.eu/rest/v2/name/" + query)
@@ -36,6 +39,7 @@ class Main extends Component {
       });
   };
 
+  // Get wheather of a country after clicking on the name of a country from the list
   getWheather = (country) => {
     this.setState({ countries: [] });
     axios
@@ -65,6 +69,7 @@ class Main extends Component {
                     aria-hidden="true"
                     style={{ fontSize: "20px" }}
                   ></span>
+                  {/* For getting name of a country from user */}
                   <input
                     type="text"
                     className="form-control px-4"
@@ -74,6 +79,7 @@ class Main extends Component {
                   <span className="input-search fa fa-search form-control-search right"></span>
                 </div>
                 <div style={{ position: "absolute", zIndex: 1, width: "85%" }}>
+                  {/* Show searched counties name in a list */}
                   {this.state.countries.map((country, index) => (
                     <div
                       key={index}
@@ -101,6 +107,7 @@ class Main extends Component {
                     </div>
                   ))}
                 </div>
+                {/* Wheather infomation cards */}
                 <div className="card-group my-3">
                   <div className="card border-0">
                     <div className="card-body p-1">
@@ -209,6 +216,7 @@ class Main extends Component {
                   </div>
                   <div className="card-body">
                     <div>
+                    {/* Chart for showing the degree of a country */}
                       <Line
                         data={this.state.data}
                         options={{
