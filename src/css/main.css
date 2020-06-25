@@ -1,0 +1,10 @@
+.input-search{
+    position: absolute;
+    right: 45px;
+    top: 45px;
+}
+.input-location{
+    position: absolute;
+    left: 45px;
+    top: 45px;
+}
